@@ -1,0 +1,14 @@
+version: '2'
+services:
+  db:
+    build: ./docker/mysql
+    ports:
+      - "3306:3306"
+  node-service:
+    build: ./docker/node
+    volumes:
+      - .:/usr/src/app
+    links:
+      - db
+    ports:
+     - "8080:8080"
